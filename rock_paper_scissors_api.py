@@ -15,6 +15,15 @@ total_players = INVALID_PLAYERS_COUNT
 player_scores = []
 player_choices = []
 
+def set_total_players(players_in_game):
+    assert(players_in_game <= MAX_PLAYERS_COUNT)
+
+    total_players = players_in_game    
+    # Initialize the players structures
+    for indx in range(0, total_players):
+        player_scores.append(0)
+        player_choices.append(0)
+
 def get_total_players():
     players_count = int(input("Enter number of players(2-5): "))
     if players_count < MIN_PLAYERS_COUNT or \
@@ -57,15 +66,16 @@ def initialize_game():
         player_choices.append(0)
 
 def play_rock_paper_scissors():
-    # 1. Play a turn - Get user choice, generate computer choices
+    # 1. Play a turn - Get user choice
     player_choices[USER_PLAYER_ID] = get_move_str(get_valid_user_choice())
     print("You drew {}".format(player_choices[USER_PLAYER_ID]))
 
+    #2. Generate other player choices
     for player in range(USER_PLAYER_ID + 1, total_players):
         player_choices[player] = make_a_choice()
         print("Player[{}] draws {}".format(player+1, player_choices[player]))
 
-    # 2. Evaluate the turn for each player
+    # 3. Evaluate the score for each player
     for player in range(0, total_players):
         for opponent in range(0, total_players):
             if evaluate_turn(player_choices[player], player_choices[opponent]) == "win":

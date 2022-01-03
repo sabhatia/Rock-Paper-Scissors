@@ -12,6 +12,7 @@ rules = {"rock": ["scissors"],
 
 seed(time.time())
 
+
 def get_move_str(move_id):
     if (move_id < 1 or move_id > len(moves)):
         return ("Invalid Id {}. Range [1 - {}])".format(move_id, len(moves)))
