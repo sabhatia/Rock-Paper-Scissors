@@ -1,5 +1,5 @@
 # CLI interface
-from rock_paper_scissors import make_a_choice, evaluate_turn, moves, get_move_str
+from rock_paper_scissors_core import make_a_choice, evaluate_turn, moves, get_move_str
 from pprint import pprint
 
 INVALID_PLAYERS_COUNT = -1

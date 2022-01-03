@@ -1,4 +1,4 @@
-from rock_paper_scissors import get_move_str
+from rock_paper_scissors_core import get_move_str
 import rock_paper_scissors_cli
 
 def test_get_total_players():
