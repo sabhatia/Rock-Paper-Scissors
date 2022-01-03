@@ -10,14 +10,11 @@ def test_get_valid_user_choice():
     print("User Choice: {} - {}".format(user_choice, get_move_str(user_choice)))
 
 if __name__ == "__main__":
-    #test_get_total_players()
-    #test_get_valid_user_choice()
-    2
-    #test playing th2e game
+    #test playing thee game
     print("Initializing game...")
     rock_paper_scissors_cli.initialize_game()
     turn_id = 1
-    while True:
+    while True: 
         print("Playing turn ", turn_id)
         rock_paper_scissors_cli.play_rock_paper_scissors()
         print("Current Score")
