@@ -10,8 +10,19 @@ rules = {"rock": ["scissors"],
         "scissors": ["paper"], 
         "paper": ["rock"]}
 
-seed(time.time())
+game_constants = {
+    "INVALID_PLAYERS_COUNT": -1,
+    "INVALID_USER_CHOICE": -1,
+    "CHOICE_QUIT": 0,
 
+    "MIN_PLAYERS_COUNT": 2,
+    "MAX_PLAYERS_COUNT":5,
+    "USER_PLAYER_ID": 0,
+}
+
+player_data = {'scores':[], 'choices':[], 'players': game_constants['INVALID_PLAYERS_COUNT']}
+
+seed(time.time())
 
 def get_move_str(move_id):
     if (move_id < 1 or move_id > len(moves)):

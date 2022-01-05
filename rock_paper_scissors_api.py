@@ -1,35 +1,30 @@
 # CLI interface
-from rock_paper_scissors_core import make_a_choice, evaluate_turn, moves, get_move_str
+from rock_paper_scissors_core import game_constants as K
+from rock_paper_scissors_core import player_data
+from rock_paper_scissors_core import moves as moves
+
+# Import Key functions
+from rock_paper_scissors_core import get_move_str
+from rock_paper_scissors_core import evaluate_turn
+from rock_paper_scissors_core import make_a_choice
+
 from pprint import pprint
 
-INVALID_PLAYERS_COUNT = -1
-INVALID_USER_CHOICE = -1
-CHOICE_QUIT = 0
-
-MIN_PLAYERS_COUNT = 2
-MAX_PLAYERS_COUNT = 5
-USER_PLAYER_ID = 0
-
-total_players = INVALID_PLAYERS_COUNT
-
-player_scores = []
-player_choices = []
-
 def set_total_players(players_in_game):
-    assert(players_in_game <= MAX_PLAYERS_COUNT)
+    assert(players_in_game <= K["MAX_PLAYERS_COUNT"])
 
-    total_players = players_in_game    
+    player_data["players"] = players_in_game    
     # Initialize the players structures
-    for indx in range(0, total_players):
-        player_scores.append(0)
-        player_choices.append(0)
+    for indx in range(0, player_data['players']):
+        player_data["scores"].append(0)
+        player_data["choices"].append(0)
 
 def get_total_players():
     players_count = int(input("Enter number of players(2-5): "))
-    if players_count < MIN_PLAYERS_COUNT or \
-       players_count > MAX_PLAYERS_COUNT:
-        print("Invalid count. Valid players {} - {}.".format(MIN_PLAYERS_COUNT, MAX_PLAYERS_COUNT))
-        return (INVALID_PLAYERS_COUNT)
+    if players_count < K["MIN_PLAYERS_COUNT"] or \
+       players_count > K["MAX_PLAYERS_COUNT"]:
+        print("Invalid count. Valid players {} - {}.".format(K["MIN_PLAYERS_COUNT"], K["MAX_PLAYERS_COUNT"]))
+        return (K["INVALID_PLAYERS_COUNT"])
     return (players_count)
 
 def valid_user_choice(selected_choice):
@@ -53,25 +48,25 @@ def get_valid_user_choice():
     
 def initialize_game():
     # 1. Find how many players there are
-    global total_players
-    global player_scores
-    global player_choices
-
-    while (total_players == INVALID_PLAYERS_COUNT):
-        total_players = get_total_players()
+    while (player_data['players'] == K["INVALID_PLAYERS_COUNT"]):
+        player_data['players'] = get_total_players()
 
     # 2. Initialize the data structures
-    for indx in range(0, total_players):
-        player_scores.append(0)
-        player_choices.append(0)
+    for indx in range(0, player_data['players']):
+        player_data["scores"].append(0)
+        player_data["choices"].append(0)
 
 def play_rock_paper_scissors():
     # 1. Play a turn - Get user choice
-    player_choices[USER_PLAYER_ID] = get_move_str(get_valid_user_choice())
-    print("You drew {}".format(player_choices[USER_PLAYER_ID]))
+    player_scores = player_data['scores']
+    player_choices = player_data['choices']
+    total_players = player_data['players']
+
+    player_choices[K["USER_PLAYER_ID"]] = get_move_str(get_valid_user_choice())
+    print("You drew {}".format(player_choices[K["USER_PLAYER_ID"]]))
 
     #2. Generate other player choices
-    for player in range(USER_PLAYER_ID + 1, total_players):
+    for player in range(K["USER_PLAYER_ID"] + 1, total_players):
         player_choices[player] = make_a_choice()
         print("Player[{}] draws {}".format(player+1, player_choices[player]))
 
@@ -82,8 +77,8 @@ def play_rock_paper_scissors():
                 player_scores[player] += 1
 
 def print_scores():
-    for indx in range(0, total_players):
-        print("Player[{}]: {}".format(indx+1, player_scores[indx]))
+    for indx in range(0, player_data['players']):
+        print("Player[{}]: {}".format(indx+1, player_data['scores'][indx]))
 
 def play_user_turn():
     return
