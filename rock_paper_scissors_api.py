@@ -79,9 +79,3 @@ def play_rock_paper_scissors():
 def print_scores():
     for indx in range(0, player_data['players']):
         print("Player[{}]: {}".format(indx+1, player_data['scores'][indx]))
-
-def play_user_turn():
-    return
-
-def play_comp_turn():
-    return
