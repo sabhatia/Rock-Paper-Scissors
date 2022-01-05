@@ -1,7 +1,7 @@
 # Rock-Paper-Scissors
 A rock-paper-scissors game implementation
 
-1. The game works supports upto 5 players
+1. The game supports upto 5 players
 2. It executes in two phases:
    - Asks the user for how many players need to play [N]
    - Continuously simulates turns asking the user to make a choice
