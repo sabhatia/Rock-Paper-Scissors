@@ -7,7 +7,7 @@ from rock_paper_scissors_core import moves as moves
 # Import Key functions
 from rock_paper_scissors_core import get_move_str
 from rock_paper_scissors_core import evaluate_turn
-from rock_paper_scissors_core import make_a_choice
+from rock_paper_scissors_core import make_a_move
 
 from pprint import pprint
 
@@ -61,12 +61,12 @@ def initialize_game():
     # 2. Initialize the data structures
     for indx in range(0, player_data['players']):
         player_data["scores"].append(0)
-        player_data["choices"].append(0)
+        player_data["moves"].append(0)
 
 def play_rock_paper_scissors():
     # 1. Intialize the game
     player_scores = player_data['scores']
-    player_choices = player_data['choices']
+    player_moves = player_data['moves']
     total_players = player_data['players']
 
     # 2. Get the player's move
@@ -78,17 +78,17 @@ def play_rock_paper_scissors():
         exit()
 
     # 4. Nope. Determine the user's move
-    player_choices[K["USER_PLAYER_ID"]] = get_move_str(user_choice)
+    player_moves[K["USER_PLAYER_ID"]] = get_move_str(user_choice)
 
     #5. Generate other player choices
     for player in range(K["USER_PLAYER_ID"] + 1, total_players):
-        player_choices[player] = make_a_choice()
-        print("Player[{}] draws {}".format(player+1, player_choices[player]))
+        player_moves[player] = make_a_move()
+        print("Player[{}] draws {}".format(player+1, player_moves[player]))
 
     # 6. Evaluate the score for each player
     for player in range(0, total_players):
         for opponent in range(0, total_players):
-            if evaluate_turn(player_choices[player], player_choices[opponent]) == "win":
+            if evaluate_turn(player_moves[player], player_moves[opponent]) == "win":
                 player_scores[player] += 1
 
 def print_scores():

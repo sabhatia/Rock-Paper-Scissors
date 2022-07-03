@@ -8,7 +8,7 @@ def test_win_loss():
     print(win_loss("rock", "scissors"))
     
 def test_draw_turn():
-    player_draw = make_a_choice()
+    player_draw = make_a_move()
     print("Player 1:{}, Player 2:{}".format(player_draw[0], player_draw[1]))
     return player_draw
 
