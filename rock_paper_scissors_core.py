@@ -20,7 +20,8 @@ game_constants = {
     "USER_PLAYER_ID": 0,
 }
 
-player_data = {'scores':[], 'choices':[], 'players': game_constants['INVALID_PLAYERS_COUNT']}
+K = game_constants
+player_data = {'scores':[], 'moves':[], 'players': K['INVALID_PLAYERS_COUNT']}
 
 seed(time.time())
 
@@ -31,19 +32,19 @@ def get_move_str(move_id):
     # Valid Id: Look into the list for the correct string
     return (moves[move_id - 1])
 
-def make_a_choice():
+def make_a_move():
     # get a choice from the list of possible moves
     return(choice(moves))
    
-def evaluate_turn(choiceA, choiceB):
-    assert(choiceA in moves)
-    assert(choiceB in moves)
+def evaluate_turn(moveA, moveB):
+    assert(moveA in moves)
+    assert(moveB in moves)
 
     # If both are same, it's a draw
-    if choiceB == choiceA:
+    if moveB == moveA:
         return "draw"
 
-    if choiceB in rules[choiceA]:
+    if moveB in rules[moveA]:
         return "win"
     else:
         return "lose"
