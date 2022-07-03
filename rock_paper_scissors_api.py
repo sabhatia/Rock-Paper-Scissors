@@ -24,7 +24,7 @@ def set_total_players(players_in_game):
         player_data["choices"].append(0)
 
 def get_total_players():
-    players_count = int(input("Enter number of players(2-5): "))
+    players_count = int(input("Enter number of players (2 - 5): "))
     if players_count < K["MIN_PLAYERS_COUNT"] or \
        players_count > K["MAX_PLAYERS_COUNT"]:
         print("Invalid count. Valid players {} - {}.".format(K["MIN_PLAYERS_COUNT"], K["MAX_PLAYERS_COUNT"]))
@@ -92,5 +92,15 @@ def play_rock_paper_scissors():
                 player_scores[player] += 1
 
 def print_scores():
+
+    # Print Banner
+    print('=' * 80)
+    print('\tGame Score'.format())
+    print('=' * 80)
+
+    # Print the player scores
     for indx in range(0, player_data['players']):
-        print("Player[{}]: {}".format(indx+1, player_data['scores'][indx]))
+        print("\tPlayer [{}]: {}".format(indx+1, player_data['scores'][indx]))
+    
+    # Blank Line
+    print()

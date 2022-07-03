@@ -15,8 +15,15 @@ if __name__ == "__main__":
     rock_paper_scissors_api.initialize_game()
     turn_id = 1
     while True: 
-        print("Playing turn ", turn_id)
+
+        # Print a banner
+        print('-' * 80)
+        print('\tPlaying Turn: {}'.format(turn_id))
+        print('-' * 80)
+        
+        # Play the turn
         rock_paper_scissors_api.play_rock_paper_scissors()
-        print("Current Score")
+
+        # Print the score after the turn2
         rock_paper_scissors_api.print_scores()
         turn_id += 1
