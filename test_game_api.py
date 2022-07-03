@@ -10,7 +10,7 @@ def test_get_valid_user_choice():
     print("User Choice: {} - {}".format(user_choice, get_move_str(user_choice)))
 
 if __name__ == "__main__":
-    #test playing thee game
+    #test playing the game
     print("Initializing game...")
     rock_paper_scissors_api.initialize_game()
     turn_id = 1
