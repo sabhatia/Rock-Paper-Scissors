@@ -31,7 +31,7 @@ def get_total_players():
         return (K["INVALID_PLAYERS_COUNT"])
     return (players_count)
 
-def valid_user_choice(selected_choice):
+def is_valid_user_choice(selected_choice):
     if (selected_choice in range(0, len(user_choices))):
         return True
     
@@ -46,7 +46,7 @@ def get_user_choice():
 def get_valid_user_choice():
     user_choice = get_user_choice()
 
-    while not valid_user_choice(user_choice):
+    while not is_valid_user_choice(user_choice):
         print("Invalid choice[{}]. Valid ranges are [{}] - [{}]".format(user_choice,
         0, len(user_choices)-1))
         user_choice = get_user_choice()
@@ -69,7 +69,6 @@ def play_rock_paper_scissors():
     player_choices = player_data['choices']
     total_players = player_data['players']
 
-    #player_choices[K["USER_PLAYER_ID"]] = get_move_str(get_valid_user_choice())
     # 2. Get the player's move
     user_choice = get_valid_user_choice()
     print("You chose [{}]".format(user_choices[user_choice]))
